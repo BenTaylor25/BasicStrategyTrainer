@@ -1,10 +1,7 @@
-use std::io;
-use std::io::{stdin, Write};
+use std::io::{self, stdin, Write};
 
-fn main() {
-    println!("Hello, world!");
-
-    print!("Enter name: ");
+fn int_input(prompt: &str) -> i32 {
+    print!("{}", prompt);
     io::stdout().flush().unwrap();
 
     let mut input_string = String::new();
@@ -12,5 +9,19 @@ fn main() {
         .ok()
         .expect("Failed to read line");
 
-    println!("Hi {}", input_string);
+    let int = input_string.trim().parse()
+        .expect("Invalid number");
+
+    int
+}
+
+fn main() {
+    println!("Hello, world!");
+
+    let a = int_input("Enter first number: ");
+    let b = int_input("Enter second number: ");
+
+    let c = a + b;
+
+    println!("{}", c);
 }
