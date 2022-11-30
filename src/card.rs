@@ -1,3 +1,7 @@
+use rand::{
+    distributions::{Distribution, Standard},
+    Rng,
+};
 
 pub enum Card {
     ACE = 'A',
@@ -14,4 +18,30 @@ pub enum Card {
     JACK = 'J',
     QUEEN = 'Q',
     KING = 'K'
+}
+
+impl Distribution<Card> for Standard {
+    fn sample<R : Rng + ?Sized>(&self, rng: &mut R) -> Card {
+        match rng.gen_range(0..=13) {
+            0 => Card::ACE,
+            1 => Card::ONE,
+            2 => Card::TWO,
+            3 => Card::THREE,
+            4 => Card::FOUR,
+            5 => Card::FIVE,
+            6 => Card::SIX,
+            7 => Card::SEVEN,
+            8 => Card::EIGHT,
+            9 => Card::NINE,
+            10 => Card::TEN,
+            11 => Card::JACK,
+            12 => Card::QUEEN,
+            _ => Card::KING,
+        }
+    }
+}
+
+fn get_rand_card() -> Card {
+    let card: Card = rand::random();
+    card
 }
