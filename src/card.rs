@@ -8,3 +8,7 @@ pub fn get_rand_card() -> char {
 
     cards[i]
 }
+
+pub fn get_rand_deck(size: usize) -> Vec<char> {
+    (0..size).map(|_| get_rand_card()).collect()
+}
