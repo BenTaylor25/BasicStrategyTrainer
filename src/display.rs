@@ -1,4 +1,11 @@
 
+fn top_bottom(count: usize) {
+     for _ in 1..=count {
+        print!("+---+ ")
+    }
+    println!();
+}
+
 pub fn display(cards: &[char]) {
     let player_card_count = cards.len() - 1;
 
@@ -10,18 +17,12 @@ pub fn display(cards: &[char]) {
     println!("| {} |", cards[0]);
     println!("+---+");
 
-    for _ in 1..=player_card_count {
-        print!("+---+ ");
-    }
-    println!();
+    top_bottom(player_card_count);
 
     for i in 1..=player_card_count {
         print!("| {} | ", cards[i]);
     }
     println!();
 
-    for _ in 1..=player_card_count {
-        print!("+---+ ")
-    }
-    println!();
+    top_bottom(player_card_count);
 }

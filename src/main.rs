@@ -4,11 +4,11 @@ mod display;
 use display::display;
 
 fn main() {
-    let c = get_rand_card();
+    let cards = [
+        get_rand_card(),
+        get_rand_card(),
+        get_rand_card(),
+    ];
 
-    println!("{}", c);
-
-
-    let cards = ['k', 'j', 'q'];
     display(&cards);
 }
