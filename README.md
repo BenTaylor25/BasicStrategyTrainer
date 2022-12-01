@@ -4,6 +4,7 @@ Interactive endless quiz for learning Blackjack Basic Strategy.
 
 ---
 
+## Hard Totals
 (top = dealer upcard, left = hard totals)  
 |   | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |10 | A |
 | - | - | - | - | - | - | - | - | - | - | - |
@@ -20,6 +21,9 @@ Interactive endless quiz for learning Blackjack Basic Strategy.
 
 [S = Stand, H = Hit, Dh = Double Down or Hit]
 
+---
+
+## Soft Totals
 (top = dealer updcard, left = soft totals)  
 |   | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |10 | A |
 | - | - | - | - | - | - | - | - | - | - | - |
