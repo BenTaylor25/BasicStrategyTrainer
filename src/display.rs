@@ -6,7 +6,7 @@ fn top_bottom(count: usize) {
     println!();
 }
 
-pub fn display(cards: &[char]) {
+pub fn print_cards(cards: &[char]) {
     let player_card_count = cards.len() - 1;
 
     if player_card_count < 2 {
