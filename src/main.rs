@@ -26,8 +26,8 @@ fn main() {
 
     display::print_cards(&cards);
 
-    let mut menu_option = String::new();
-    menu_input(&mut menu_option);
+    let mut input_string = String::new();
+    menu_input(&mut input_string);
 
-    println!("{}", menu_option);
+
 }
