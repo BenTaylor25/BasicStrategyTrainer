@@ -1,5 +1,6 @@
 mod card;
 mod display;
+mod basic_strategy;
 
 use std::io::{self, stdin, Write};
 
