@@ -9,6 +9,7 @@ fn menu_input(input_string: &mut String) {
     loop {
         print!("> ");
         io::stdout().flush().unwrap();
+        input_string.clear();
         stdin().read_line(input_string)
             .ok()
             .expect("Failed to read input");
