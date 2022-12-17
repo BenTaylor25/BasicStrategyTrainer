@@ -30,5 +30,7 @@ fn main() {
     let mut input_string = String::new();
     menu_input(&mut input_string);
 
+    let input_chars: Vec<char> = input_string.chars().collect();
 
+    let _correct_guess = basic_strategy::check_move(&cards, input_chars[0]);
 }
