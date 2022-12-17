@@ -26,9 +26,8 @@ fn main() {
     let mut keep_playing = true;
     while keep_playing {
         let cards = card::get_rand_deck(3);
-        let player_blackjack = 
-            card::get_card_value(cards[1]) +
-            card::get_card_value(cards[2]) == 21;
+        let player_total = basic_strategy::calc_player_total(&cards);
+        let player_blackjack = player_total.soft && player_total.total == 11;
 
         display::print_cards(&cards);
 

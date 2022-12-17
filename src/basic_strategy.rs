@@ -1,11 +1,11 @@
 use crate::card;
 
-struct Total {
-    total: i8,
-    soft: bool
+pub struct Total {
+    pub total: i8,
+    pub soft: bool
 }
 
-fn calc_player_total(cards: &Vec<char>) -> Total {
+pub fn calc_player_total(cards: &Vec<char>) -> Total {
     let mut has_ace = false;
     let mut total = 0i8;
 
