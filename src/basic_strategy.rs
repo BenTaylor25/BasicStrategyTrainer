@@ -24,6 +24,10 @@ fn player_can_split(cards: &Vec<char>) -> bool {
     cards[1] == cards[2] && cards.len() == 3
 }
 
+fn player_can_double_down(cards: &Vec<char>) -> bool {
+    cards.len() == 3
+}
+
 pub fn check_move(cards: &Vec<char>, choice: char) -> bool {
     let mut dealer_total = card::get_card_value(cards[0]);
     if dealer_total == 1 {
@@ -31,6 +35,7 @@ pub fn check_move(cards: &Vec<char>, choice: char) -> bool {
     }
     let player_total = calc_player_total(&cards);
     let can_split = player_can_split(&cards);
+    let can_double = player_can_double_down(&cards);
 
     if can_split {
         // Double after Split rule
@@ -66,7 +71,53 @@ pub fn check_move(cards: &Vec<char>, choice: char) -> bool {
     }
 
     if player_total.soft {
-        return false; //
+        // player total = player_total.total or player_total.total + 10
+
+        // A + 9
+        if player_total.total == 10 {
+            return choice == 's';
+        }
+
+        // A + 8
+        if player_total.total == 9 {
+            if dealer_total == 6 && can_double {
+                return choice == 'd';
+            }
+            return choice == 's';
+        }
+
+        // A + 7
+        if player_total.total == 8 {
+            if dealer_total > 8 {
+                return choice == 'h';
+            }
+            if dealer_total < 7 && can_double {
+                return choice == 'd';
+            }
+            return choice == 's';
+        }
+
+        // A + 6
+        if player_total.total == 7 {
+            if dealer_total > 2 && dealer_total < 7 && can_double {
+                return choice == 'd';
+            }
+            return choice == 'h';
+        }
+
+        // A + 5 or A + 4
+        if player_total.total > 4 {
+            if dealer_total > 3 && dealer_total < 7 {
+                return choice == 'd';
+            }
+            return choice == 'h';
+        }
+
+        // A + 3 or A + 2
+        if dealer_total > 4 && dealer_total < 7 {
+            return choice == 'd';
+        }
+        return choice == 'h';
     }
 
     // hard totals
@@ -93,18 +144,25 @@ pub fn check_move(cards: &Vec<char>, choice: char) -> bool {
     }
 
     if player_total.total == 11 {
-        return choice == 'd';
+        if can_double {
+            return choice == 'd';
+        } else {
+            return choice == 'h';
+        }
     }
 
     if player_total.total == 10 {
         if dealer_total >= 10 {
             return choice == 'h';
         }
-        return choice == 'd';
+        if can_double {
+            return choice == 'd';
+        }
+        return choice == 'h';
     }
 
     // player total == 9
-    if dealer_total >= 3 && dealer_total <= 6 {
+    if dealer_total >= 3 && dealer_total <= 6 && can_double {
         return choice == 'd';
     }
     return choice == 'h';
