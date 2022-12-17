@@ -23,27 +23,30 @@ fn menu_input(input_string: &mut String) {
 }
 
 fn main() {
-    let cards = card::get_rand_deck(3);
-    let player_blackjack = 
-        card::get_card_value(cards[1])
-        + card::get_card_value(cards[2])
-        == 21;
+    loop {
+        let cards = card::get_rand_deck(3);
+        let player_blackjack = 
+            card::get_card_value(cards[1])
+            + card::get_card_value(cards[2])
+            == 21;
 
-    display::print_cards(&cards);
+        display::print_cards(&cards);
 
-    if player_blackjack {
-        println!("Blackjack!");
-    } else {
-        let mut input_string = String::new();
-        menu_input(&mut input_string);
-
-        let input_chars: Vec<char> = input_string.chars().collect();
-
-        let correct_guess = basic_strategy::check_move(&cards, input_chars[0]);
-        if correct_guess {
-            println!("Correct!");
+        if player_blackjack {
+            println!("Blackjack!");
         } else {
-            println!("Incorrect!");
+            let mut input_string = String::new();
+            menu_input(&mut input_string);
+
+            let input_chars: Vec<char> = input_string.chars().collect();
+
+            let correct_guess = basic_strategy::check_move(&cards, input_chars[0]);
+            if correct_guess {
+                println!("Correct!");
+            } else {
+                println!("Incorrect!");
+            }
         }
+        println!("\n");
     }
 }
