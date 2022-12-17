@@ -98,11 +98,11 @@ pub fn check_move(cards: &Vec<char>, choice: char, correct_char: &mut String) ->
         // A + 7
         if player_total.total == 8 {
             if dealer_total > 8 {
-            correct_char.push('h');
+                correct_char.push('h');
                 return choice == 'h';
             }
             if dealer_total < 7 && can_double {
-            correct_char.push('d');
+                correct_char.push('d');
                 return choice == 'd';
             }
             correct_char.push('s');
@@ -112,7 +112,7 @@ pub fn check_move(cards: &Vec<char>, choice: char, correct_char: &mut String) ->
         // A + 6
         if player_total.total == 7 {
             if dealer_total > 2 && dealer_total < 7 && can_double {
-            correct_char.push('d');
+                correct_char.push('d');
                 return choice == 'd';
             }
             correct_char.push('h');
@@ -134,18 +134,18 @@ pub fn check_move(cards: &Vec<char>, choice: char, correct_char: &mut String) ->
             correct_char.push('d');
             return choice == 'd';
         }
-            correct_char.push('h');
+        correct_char.push('h');
         return choice == 'h';
     }
 
     // hard totals
     if player_total.total >= 17 {
-            correct_char.push('s');
+        correct_char.push('s');
         return choice == 's';
     }
 
     if player_total.total <= 8 {
-            correct_char.push('h');
+        correct_char.push('h');
         return choice == 'h';
     }
 
@@ -154,7 +154,7 @@ pub fn check_move(cards: &Vec<char>, choice: char, correct_char: &mut String) ->
             correct_char.push('h');
             return choice == 'h';
         }
-            correct_char.push('s');
+        correct_char.push('s');
         return choice == 's';
     }
 
@@ -163,7 +163,7 @@ pub fn check_move(cards: &Vec<char>, choice: char, correct_char: &mut String) ->
             correct_char.push('s');
             return choice == 's';
         }
-            correct_char.push('h');
+        correct_char.push('h');
         return choice == 'h';
     }
 
@@ -179,14 +179,14 @@ pub fn check_move(cards: &Vec<char>, choice: char, correct_char: &mut String) ->
 
     if player_total.total == 10 {
         if dealer_total >= 10 {
-        correct_char.push('h');
+            correct_char.push('h');
             return choice == 'h';
         }
         if can_double {
-        correct_char.push('d');
+            correct_char.push('d');
             return choice == 'd';
         }
-        correct_char.push('h');
+            correct_char.push('h');
         return choice == 'h';
     }
 
@@ -195,7 +195,7 @@ pub fn check_move(cards: &Vec<char>, choice: char, correct_char: &mut String) ->
         correct_char.push('d');
         return choice == 'd';
     }
-        correct_char.push('h');
+    correct_char.push('h');
     return choice == 'h';
 
 
