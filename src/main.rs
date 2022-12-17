@@ -43,11 +43,13 @@ fn main() {
             if input_chars[0] == 'q' {
                 keep_playing = false;
             } else {
-                let correct_guess = basic_strategy::check_move(&cards, input_chars[0]);
-                if correct_guess {
+                let mut correct_char = String::new();
+                let guessed_correct = basic_strategy::check_move(&cards, input_chars[0], &mut correct_char);
+                if guessed_correct {
                     println!("Correct!");
                 } else {
                     println!("Incorrect!");
+                    println!("{}", correct_char);
                 }
                 println!();
             }
