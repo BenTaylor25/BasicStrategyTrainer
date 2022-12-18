@@ -21,6 +21,8 @@ Basic Strategy will help you win more games.
 **Note: Basic Strategy does NOT give you enough of an advantage to win more than you lose.**  
 **Note: I do not advocate careless gambling; please do not gamble what you cannot afford to lose.**
 
+![image](https://user-images.githubusercontent.com/97246704/208298259-b315bf41-57dc-4a55-a087-3830bae04c57.png)
+
 
 (todo)
 - implement surrender
