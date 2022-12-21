@@ -3,6 +3,7 @@ mod display;
 mod basic_strategy;
 
 use std::io::{self, stdin, Write};
+use colored::Colorize;
 
 fn menu_input(input_string: &mut String) {
     println!("Hit (h), Stand (s), Double Down (d), Split (2), or Quit (q)");
@@ -48,9 +49,9 @@ fn main() {
                 let mut correct_char = String::new();
                 let guessed_correct = basic_strategy::check_move(&cards, input_chars[0], &mut correct_char);
                 if guessed_correct {
-                    println!("Correct!");
+                    println!("{}", format!("Correct!").green());
                 } else {
-                    println!("Incorrect!");
+                    println!("{}", format!("Incorrect!").red());
                     println!("{}", correct_char);
                 }
                 println!();
