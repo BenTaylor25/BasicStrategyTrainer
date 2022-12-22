@@ -26,7 +26,6 @@ Basic Strategy will help you win more games.
 
 (todo)
 - implement surrender
-- refactor split (das)?
 
 ---
 

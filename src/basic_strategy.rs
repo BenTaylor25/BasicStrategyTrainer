@@ -38,9 +38,6 @@ pub fn check_move(cards: &Vec<char>, choice: char, correct_char: &mut String) ->
     let can_double = player_can_double_down(&cards);
 
     if can_split {
-        // Double after Split rule
-        const DAS: bool = true;
-
         if cards[1] == 'A' || cards[1] == '8' {
             correct_char.push('2');
             return choice == '2';
@@ -57,27 +54,34 @@ pub fn check_move(cards: &Vec<char>, choice: char, correct_char: &mut String) ->
         }
 
         if cards[1] == '6' {
-            if dealer_total < 7 && !(cards[0] == '2' && !DAS) {
+            if dealer_total < 7 {
+                if cards[0] == '2' {
+                    correct_char.push('5');
+                    return choice == '5';
+                }
+
                 correct_char.push('2');
                 return choice == '2';
             }
         }
 
-        if cards[1] == '4' && (cards[0] == '5' || cards[0] == '6') && DAS {
-            correct_char.push('2');
-            return choice == '2';
+        if cards[1] == '4' && (cards[0] == '5' || cards[0] == '6') {
+            correct_char.push('5');
+            return choice == '5';
         }
 
         if (cards[1] == '2' || cards[1] == '3') && dealer_total < 8 {
-            if dealer_total > 3 || DAS {
+            if dealer_total > 3 {
                 correct_char.push('2');
                 return choice == '2';
             }
+            correct_char.push('5');
+            return choice == '5';
         }
     }
 
     if player_total.soft {
-        // player total = player_total.total or player_total.total + 10
+        // player's total = player_total.total or player_total.total + 10
 
         // A + 9
         if player_total.total == 10 {

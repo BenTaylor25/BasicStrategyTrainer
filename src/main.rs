@@ -6,7 +6,7 @@ use std::io::{self, stdin, Write};
 use colored::Colorize;
 
 fn menu_input(input_string: &mut String) {
-    println!("Hit (h), Stand (s), Double Down (d), Split (2), or Quit (q)");
+    println!("Hit (h), Stand (s), Double Down (d), Split (2), Split iff DAS (5) or Quit (q)");
 
     loop {
         print!("> ");
@@ -17,7 +17,7 @@ fn menu_input(input_string: &mut String) {
             .expect("Failed to read input");
 
         match input_string.trim() {
-            "h" | "s" | "d" | "2" | "q" => break,
+            "h" | "s" | "d" | "2" | "q" | "5" => break,
             _ => continue
         }
     }
