@@ -80,6 +80,14 @@ pub fn check_move(cards: &Vec<char>, choice: char, correct_char: &mut String) ->
         }
     }
 
+    // surrender
+    if (player_total.total == 16 && dealer_total >= 9) || 
+        (player_total.total == 15 && cards[0] == 'T') 
+    {
+        correct_char.push('x');
+        return choice == 'x';
+    }
+
     if player_total.soft {
         // player's total = player_total.total or player_total.total + 10
 

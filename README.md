@@ -23,10 +23,6 @@ Basic Strategy will help you win more games.
 
 ![image](https://user-images.githubusercontent.com/97246704/208298259-b315bf41-57dc-4a55-a087-3830bae04c57.png)
 
-
-(todo)
-- implement surrender
-
 ---
 
 ## Hard Totals
